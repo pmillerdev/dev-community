@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const gravatar = require("gravatar");
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const keys = require("../../config/keys");
 
 // Load User modal
 const User = require("../../models/User");
@@ -50,15 +52,30 @@ router.post("/login", (req, res) => {
 
   // Find user by email
   User.findOne({ email }).then(user => {
-    // Check for user
+    // Check if user exists
     if (!user) {
       return res.status(404).json({ email: "User not found" });
     }
 
-    // Check Password
+    // Check if password matches password in database
     bcrypt.compare(password, user.password).then(isMatched => {
       if (isMatched) {
-        res.json({ msg: "Login Successful" });
+        // User Matched
+
+        const payload = { id: user.id, name: user.name, avatar: user.avatar }; // Create JWT payload
+
+        // Sign Token
+        jwt.sign(
+          payload,
+          keys.secretOrKey,
+          { expiresIn: 3600 },
+          (err, token) => {
+            res.json({
+              success: true,
+              token: "Bearer " + token
+            });
+          }
+        );
       } else {
         return res.status(400).json({ password: "Password incorrect" });
       }

@@ -8,6 +8,7 @@ const passport = require("passport");
 
 // Load Input Validation
 const validateRegisterInput = require("../../validation/register");
+const validateLoginInput = require("../../validation/login");
 
 // Load User modal
 const User = require("../../models/User");
@@ -32,7 +33,7 @@ router.post("/register", (req, res) => {
     if (err) return res.status(400).jsonp({ error: err });
 
     if (foundUser) {
-      errors.email = "Email Already exists";
+      errors.email = "Email already exists";
       return res.status(400).json(errors);
     } else {
       const { name, email, password, avatar } = req.body;
@@ -59,6 +60,13 @@ router.post("/register", (req, res) => {
 // @desc   Login User / Return JWT
 // @access Public
 router.post("/login", (req, res) => {
+  const { errors, isValid } = validateLoginInput(req.body);
+
+  // Check Validation
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+
   const email = req.body.email;
   const password = req.body.password;
 
@@ -66,7 +74,8 @@ router.post("/login", (req, res) => {
   User.findOne({ email }).then(user => {
     // Check if user exists
     if (!user) {
-      return res.status(404).json({ email: "User not found" });
+      errors.email = "User not found";
+      return res.status(404).json(errors);
     }
 
     // Check if password matches password in database
@@ -89,7 +98,8 @@ router.post("/login", (req, res) => {
           }
         );
       } else {
-        return res.status(400).json({ password: "Password incorrect" });
+        errors.password = "Password is incorrect";
+        return res.status(400).json(errors);
       }
     });
   });

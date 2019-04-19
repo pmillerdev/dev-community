@@ -1,3 +1,4 @@
+// Utility function that checks if a field is empty in any way
 const isEmpty = value =>
   value === undefined ||
   value === null ||

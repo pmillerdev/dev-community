@@ -1,10 +1,93 @@
 import React, { Component } from "react";
+import Moment from "react-moment";
 
 class ProfileCreds extends Component {
   render() {
+    const { experience, education } = this.props;
+
+    const expItems = experience.map(exp => (
+      <li key={exp._id} className="list-group-item">
+        <h4>{exp.company}</h4>
+        <p>
+          <Moment format="DD/MM/YYYY">{exp.from}</Moment> -{" "}
+          {exp.to === null ? (
+            "Now"
+          ) : (
+            <Moment format="DD/MM/YYYY">{exp.to}</Moment>
+          )}
+        </p>
+        <p>
+          <strong>Position:</strong> {exp.title}
+        </p>
+        <p>
+          {exp.location && (
+            <span>
+              <strong>Location:</strong> {exp.location}
+            </span>
+          )}
+        </p>
+        <p>
+          {exp.description && (
+            <span>
+              <strong>Description:</strong> {exp.description}
+            </span>
+          )}
+        </p>
+      </li>
+    ));
+
+    const eduItems = education.map(edu => (
+      <li key={edu._id} className="list-group-item">
+        <h4>{edu.institution}</h4>
+        <p>
+          <Moment format="DD/MM/YYYY">{edu.from}</Moment> -{" "}
+          {edu.to === null ? (
+            "Now"
+          ) : (
+            <Moment format="DD/MM/YYYY">{edu.to}</Moment>
+          )}
+        </p>
+        <p>
+          <strong>Degree:</strong> {edu.qualification}
+        </p>
+        <p>
+          <strong>Field of Study:</strong> {edu.fieldofstudy}
+        </p>
+        <p>
+          {edu.location && (
+            <span>
+              <strong>Location:</strong> {edu.location}
+            </span>
+          )}
+        </p>
+        <p>
+          {edu.description && (
+            <span>
+              <strong>Description:</strong> {edu.description}
+            </span>
+          )}
+        </p>
+      </li>
+    ));
+
     return (
-      <div>
-        <h1>Profile Creds Here</h1>
+      <div className="row">
+        <div className="col-md-6">
+          <h3 className="text-center text-info">Experience</h3>
+          {expItems.length > 0 ? (
+            <ul className="list-group">{expItems}</ul>
+          ) : (
+            <p className="text-center">No Experience Listed</p>
+          )}
+        </div>
+        <div className="col-md-6">
+          <h3 className="text-center text-info">Education</h3>
+          {eduItems.length > 0 ? (
+            <ul className="list-group">{eduItems}</ul>
+          ) : (
+            <p className="text-center">No Education Listed</p>
+          )}
+        </div>
       </div>
     );
   }

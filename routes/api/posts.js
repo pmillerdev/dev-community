@@ -54,7 +54,7 @@ router.post(
     // Check validation
     if (!isValid) {
       // If any errors send 400 with errors object
-      returnres.status(400).json(errors);
+      return res.status(400).json(errors);
     }
 
     const newPost = new Post({

@@ -12,3 +12,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+img {
+  width: 100%;
+}
+
+.landing {
+  background: url("./img/showcase.jpg") no-repeat;
+}
+
+.form-control::placeholder {
+  color: #bbb !important;
+}

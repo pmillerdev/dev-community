@@ -10,10 +10,30 @@ class Landing extends Component {
     }
   }
 
+  styles = {
+    landing: {
+      position: "relative",
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      height: "100vh",
+      marginTop: "-24px",
+      marginBottom: "-50px"
+    },
+    landingOverlay: {
+      paddingTop: "80px",
+      backgroundColor: "rgba(0, 0, 0, 0.7)",
+      position: "absolute",
+      top: "0",
+      left: "0",
+      width: "100%",
+      height: "100%"
+    }
+  };
+
   render() {
     return (
-      <div className="landing">
-        <div className="dark-overlay landing-inner text-light">
+      <div className="landing" style={this.styles.landing}>
+        <div className="text-light" style={this.styles.landingOverlay}>
           <div className="container">
             <div className="row">
               <div className="col-md-12 text-center">

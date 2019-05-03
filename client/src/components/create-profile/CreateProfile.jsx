@@ -74,7 +74,7 @@ class CreateProfile extends Component {
 
     if (displaySocialInputs) {
       socialInputs = (
-        <div>
+        <>
           <InputGroup
             placeholder="Twitter Profile URL"
             name="twitter"
@@ -107,7 +107,7 @@ class CreateProfile extends Component {
             onChange={this.onChange}
             erorr={errors.instagram}
           />
-        </div>
+        </>
       );
     }
 

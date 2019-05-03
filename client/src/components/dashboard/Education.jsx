@@ -30,7 +30,7 @@ class Education extends Component {
       </tr>
     ));
     return (
-      <div>
+      <>
         <h4 className="mb-2">Education Credentials</h4>
         <table className="table">
           <thead>
@@ -43,7 +43,7 @@ class Education extends Component {
           </thead>
           <tbody>{education}</tbody>
         </table>
-      </div>
+      </>
     );
   }
 }

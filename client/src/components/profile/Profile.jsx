@@ -30,7 +30,7 @@ class Profile extends Component {
       profileContent = <Spinner />;
     } else {
       profileContent = (
-        <div>
+        <>
           <div className="row">
             <div className="col-md-6">
               <Link to="/profiles" className="btn btn-lgiht mb-3 float-left">
@@ -48,7 +48,7 @@ class Profile extends Component {
           {profile.githubusername ? (
             <ProfileGithub username={profile.githubusername} />
           ) : null}
-        </div>
+        </>
       );
     }
 

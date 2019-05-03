@@ -31,7 +31,7 @@ class Experience extends Component {
     ));
 
     return (
-      <div>
+      <>
         <h4 className="mb-2">Experience Credentials</h4>
         <table className="table">
           <thead>
@@ -44,7 +44,7 @@ class Experience extends Component {
           </thead>
           <tbody>{experience}</tbody>
         </table>
-      </div>
+      </>
     );
   }
 }

@@ -15,6 +15,7 @@ class Landing extends Component {
       position: "relative",
       backgroundSize: "cover",
       backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
       height: "100vh",
       marginTop: "-24px",
       marginBottom: "-50px"

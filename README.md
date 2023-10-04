@@ -4,7 +4,7 @@ A full-stack social networking app for developers. Features include: viewing and
 
 Technologies: React, Redux, Router, MongoDB (Mongo Atlas), Mongoose, Express, NodeJS, Passport, JSON Web Token Auth.
 
-Deployed using: Render.
+Deployed [here](https://dev-community.onrender.com/) using Render (note that the initial load on Render can be slow).
 
 ## Running Locally
 

@@ -1,4 +1,4 @@
-# DevCommunity
+# Developer Community
 
 A full-stack social networking app for developers. Features include: viewing and editing profiles, creating and commenting on forum posts and a registration and login facility using JWT.
 
@@ -6,7 +6,7 @@ Technologies: React, Redux, Router, MongoDB (Mongo Atlas), Mongoose, Express, No
 
 Deployed using: Render.
 
-## To run locally
+## Running Locally
 
 0. Ensure your `keys_dev.js` file exists in `config` with the `mongoURI` and `secret` keys defined.
 1. `npm run client-install`
